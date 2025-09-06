@@ -32,51 +32,62 @@ import com.jorgeromo.androidClassMp1.ui.theme.AndroidClassMP1Theme
 
 @Composable
 fun LoginView() {
-    // Variables de estado
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
 
-    // Estructura principal
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Imagen del logo
         Image(
             painter = painterResource(id = R.drawable.ulsalogo),
-            contentDescription = "",
+            contentDescription = "Logo",
             modifier = Modifier
-                .size(150.dp)
+                .size(120.dp)
                 .clip(CircleShape)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
-        // Campo de correo electrónico
-        OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text(stringResource(R.string.email_label)) },
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Email
-            ),
-            modifier = Modifier.fillMaxWidth()
+        Text(
+            text = "Welcome Back",
+            style = MaterialTheme.typography.headlineMedium,
+            color = MaterialTheme.colorScheme.primary
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Campo de contraseña
+        Text(
+            text = "Sign in to continue",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        //Email
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text(stringResource(R.string.email_label)) },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Email),
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // Password
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
             label = { Text(stringResource(R.string.password_label)) },
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Password
-            ),
+            singleLine = true,
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Password),
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
                 val icon = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff
@@ -87,14 +98,33 @@ fun LoginView() {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
-        // Botón de inicio de sesión
+        // Login Button
         Button(
-            onClick = { /* Lógica de autenticación */ },
-            modifier = Modifier.fillMaxWidth()
+            onClick = { /* auth logic */ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp),
+            shape = MaterialTheme.shapes.medium
         ) {
-            Text(stringResource(R.string.login_button))
+            Text(
+                stringResource(R.string.login_button),
+                style = MaterialTheme.typography.labelLarge
+            )
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // Face ID button
+        OutlinedButton(
+            onClick = { /* Face ID logic */ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp),
+            shape = MaterialTheme.shapes.medium
+        ) {
+            Text("Log in with Face ID")
         }
     }
 }
