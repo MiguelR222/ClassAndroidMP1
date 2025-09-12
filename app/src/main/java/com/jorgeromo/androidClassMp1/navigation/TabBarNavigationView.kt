@@ -95,13 +95,13 @@ fun TabBarNavigationView(navController: NavHostController = rememberNavControlle
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(ScreenNavigation.Ids.route) { IdsView(navController) }
-            composable(ScreenNavigation.FirstPartial.route) { FirstPartialView() }
+            composable(ScreenNavigation.FirstPartial.route) { FirstPartialView(navController) }
             composable(ScreenNavigation.SecondPartial.route) { SecondPartialView() }
             composable(ScreenNavigation.ThirdPartial.route) { ThirdPartialView(navController) }
 
             // Rutas internas
             composable(ScreenNavigation.IMC.route) { IMCView() }
-            composable(ScreenNavigation.Login.route) { LoginView() }
+            composable(ScreenNavigation.Login.route) { LoginView(navController) }
             composable(ScreenNavigation.Sum.route) { SumView() }
             composable(ScreenNavigation.Temperature.route) { TempView() }
             composable(ScreenNavigation.StudentList.route) { StudentView() }
