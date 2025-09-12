@@ -3,6 +3,7 @@ package com.jorgeromo.androidClassMp1.firstpartial.animation.view
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.airbnb.lottie.compose.*
 import com.jorgeromo.androidClassMp1.R
 import com.jorgeromo.androidClassMp1.firstpartial.animation.viewmodel.AnimationViewModel
@@ -27,7 +28,7 @@ fun AnimatedView(
 }
 
 @Composable
-fun MyScreen(viewModel: AnimationViewModel) {
+fun AnimationView(viewModel: AnimationViewModel = viewModel()) {
     val uiState = viewModel.uiState.collectAsState()
 
     if (uiState.value.isLoading) {

@@ -34,5 +34,11 @@ fun FirstPartialView(navController: NavHostController) {
         ) {
             Text("Login")
         }
+        Button(
+            onClick = { navController.navigate(ScreenNavigation.Animation.route) },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Animation")
+        }
     }
 }
